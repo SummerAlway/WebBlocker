@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>WebBlocker</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: "Microsoft YaHei UI", "Segoe UI", sans-serif;
+      }
+      body {
+        width: 300px;
+        margin: 0;
+        padding: 14px;
+        background: #ffffff;
+        color: #111827;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+      .header img {
+        width: 40px;
+        height: 40px;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 16px;
+      }
+      .header p {
+        margin: 2px 0 0;
+        font-size: 11px;
+        color: #6b7280;
+      }
+      .card {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 8px 10px;
+        margin-bottom: 12px;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 0;
+        font-size: 12px;
+      }
+      .row span {
+        color: #6b7280;
+      }
+      .good {
+        color: #15803d;
+      }
+      .bad {
+        color: #b91c1c;
+      }
+      button {
+        width: 100%;
+        padding: 8px 10px;
+        border: 0;
+        border-radius: 6px;
+        background: #166534;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: default;
+      }
+      .hint {
+        margin: 10px 0 0;
+        font-size: 11px;
+        line-height: 1.5;
+        color: #6b7280;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #1f2937;
+          color: #f9fafb;
+        }
+        .card {
+          border-color: #374151;
+        }
+        .row span,
+        .hint,
+        .header p {
+          color: #9ca3af;
+        }
+        .good {
+          color: #4ade80;
+        }
+        .bad {
+          color: #f87171;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img src="icons/icon48.png" alt="" />
+      <div>
+        <h1>WebBlocker</h1>
+        <p>自动同步主程序的屏蔽列表</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row"><span>状态</span><strong id="status">检查中…</strong></div>
+      <div class="row"><span>生效规则</span><strong id="count">0</strong></div>
+      <div class="row"><span>列表总数</span><strong id="total">0</strong></div>
+      <div class="row"><span>上次同步</span><strong id="synced">—</strong></div>
+    </div>
+
+    <button id="sync">立即同步</button>
+
+    <p class="hint">
+      需要 WebBlocker 主程序正在运行才能同步。规则保存在浏览器中，主程序关闭后仍会继续生效。
+      主程序中的“浏览器扩展拦截”开关关闭时，这里会清空规则。
+    </p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
